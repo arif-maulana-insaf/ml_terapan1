@@ -13,7 +13,7 @@ Dang, N. C., Moreno-García, M. N., & De la Prieta, F. (2020).
 Sentiment analysis based on deep learning: A comparative study.
 [https://www.mdpi.com/2079-9292/9/3/483](https://www.mdpi.com/2079-9292/9/3/483)
 
-# Business Understanding
+## Business Understanding
 Bagian laporan ini mencakup : 
 ### Problem Statements
 - Bagaimana cara membangun model klasifikasi sentimen yang akurat untuk ulasan pelanggan IM3 dalam bahasa Indonesia, mampu mengkategorikan sentimen menjadi positif, netral, dan negatif?
@@ -49,18 +49,18 @@ Dari hasil ini, terlihat bahwa model LSTM memiliki masalah serius dalam mengklas
 
 2. Model CNN:
 
-Akurasi: 0.7990 (sekitar 80%)
+Akurasi: 0.8095 (sekitar 80%)
 Classification Report:
 
 |kategori | precission | recall | f1-score |
 |---------|---------|---------|----------|
-|negatif: |0.87| 0.83| 0.85|
-|netral: | 0.15 | 0.10 |0.12|
-|positif: |0.79| 0.87| 0.83|
+|negatif: |0.85| 0.87| 0.86|
+|netral: | 0.10 | 0.05 |0.06|
+|positif: |0.81| 0.85| 0.83|
 
-Macro Avg F1-Score: 0.60
+Macro Avg F1-Score: 0.58
 
-Weighted Avg F1-Score: 0.79
+Weighted Avg F1-Score: 0.80
 
 Mengapa Model CNN Dipilih sebagai Model Terbaik:
 
@@ -69,7 +69,7 @@ Model CNN dipilih sebagai solusi terbaik berdasarkan alasan-alasan berikut:
 Akurasi Keseluruhan yang Jauh Lebih Tinggi: Model CNN mencapai akurasi sebesar 80%, yang jauh lebih tinggi dibandingkan dengan akurasi model LSTM yang hanya 53%. Akurasi yang lebih tinggi menunjukkan bahwa model CNN secara keseluruhan lebih sering membuat prediksi yang benar.
 Mampu Mengklasifikasikan Semua Kelas: Berbeda dengan model LSTM yang gagal total dalam memprediksi kelas 'netral' dan 'positif', model CNN menunjukkan kemampuan untuk memprediksi ketiga kelas sentimen ('negatif', 'netral', 'positif'), meskipun performa pada kelas 'netral' masih rendah. Kemampuan untuk membedakan antara ketiga sentimen ini sangat krusial untuk tujuan proyek, yaitu mendapatkan insight yang beragam.
 Performa yang Baik pada Kelas Mayoritas: Model CNN menunjukkan precision, recall, dan F1-score yang solid (di atas 0.79) untuk kelas 'negatif' dan 'positif'. Ini sangat penting karena kedua kelas ini kemungkinan merupakan mayoritas ulasan yang akan ditangani.
-Keseimbangan Metrik: Meskipun kelas 'netral' masih menjadi tantangan bagi CNN (dengan F1-score 0.12), kinerja yang kuat pada kelas 'negatif' dan 'positif' serta akurasi keseluruhan yang tinggi menjadikannya pilihan yang lebih unggul. F1-score weighted average CNN sebesar 0.79 juga jauh lebih baik dibandingkan LSTM (0.36), menunjukkan kinerja yang lebih seimbang secara keseluruhan.
+Keseimbangan Metrik: Meskipun kelas 'netral' masih menjadi tantangan bagi CNN (dengan F1-score 0.06), kinerja yang kuat pada kelas 'negatif' dan 'positif' serta akurasi keseluruhan yang tinggi menjadikannya pilihan yang lebih unggul. F1-score weighted average CNN sebesar 0.79 juga jauh lebih baik dibandingkan LSTM (0.36), menunjukkan kinerja yang lebih seimbang secara keseluruhan.
 
 # Data understanding
 Dataset yang digunakan dalam proyek ini ialah im3 yang saya ambil dari kaggle 
@@ -309,27 +309,35 @@ Weighted Avg F1-Score: 0.36
 
 #### hasil dari cnn
 
-Akurasi: 0.7990 (sekitar 80%)
+Akurasi: 0.8095 (sekitar 80%)
 Classification Report:
 
 |kategori | precission | recall | f1-score |
 |---------|---------|---------|----------|
-|negatif: |0.87| 0.83| 0.85|
-|netral: | 0.15 | 0.10 |0.12|
-|positif: |0.79| 0.87| 0.83|
+|negatif: |0.85| 0.87| 0.86|
+|netral: | 0.10 | 0.05 |0.06|
+|positif: |0.81| 0.85| 0.83|
 
-Macro Avg F1-Score: 0.60
+Macro Avg F1-Score: 0.58
 
-Weighted Avg F1-Score: 0.79
+Weighted Avg F1-Score: 0.80
 
 #### hasil
 - kinerja yang lebih baik:
-   - Akurasi 79.9% dan F1-score tertimbang (weighted avg) 0.79.
-   - Mampu mengenali pola "positif" (F1 0.83) dan "negatif" (F1 0.85).
+   - Akurasi 80.9% dan F1-score tertimbang (weighted avg) 0.80.
+   - Mampu mengenali pola "positif" (F1 0.83) dan "negatif" (F1 0.86).
 - lebih robust:
    - Tidak overfit ke satu kelas (berbeda dengan LSTM).
 - masih buruk untuk kelas netral
    - karena f1 score jumlah datanya hanya sedikit (130 sample)
+ 
+dan dari pengentesan dengan 2 kalimat yiatu:
+|# | kalimat | hasil | model |
+|----|-------|------|--------|
+| 1 | pelayanannya sangat buruk dan aplikasi error terus | negatif | lstm |
+| 2 | pelayanannya sangat buruk dan aplikasi error terus | negatif | cnn |
+| 3 | pelayanannya sangat bagus dan saya sangat suka | negatif | lstm |
+| 4 | elayanannya sangat bagus dan saya sangat suka | postif | cnn | 
 
 
  ## hasil keseluruhan 
